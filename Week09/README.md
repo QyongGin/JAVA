@@ -57,7 +57,8 @@ public class test {
 // 매개변수로 int를 받을 떄 byte type 변수를 넣어도 int보다 작기 때문에 자동 타입 변환이 된다. 대신 double은 불가능
 // int형끼리 나누면 double형이어도 int형으로 반환되고 소실된 소수점은 돌아오지 않는다.
 double mtest (int x, int y) { 
-		return x / y;
+		return x / y; // 7 / 3 == 2.33333... 이지만 int형끼리 계산하여 실제로는 2.0이 반환된다.
+			      // 정확한 계산을 위해서는 x나 y 중 하나라도 double형으로 변환해야 한다.
 	}
 ```
 
@@ -186,10 +187,69 @@ double plus(double x, double y) {
 	double result = x + y;
 	return result;
 }
+
+// 오버로딩이 아닌 예시. 매개변수의 타입, 개수, 순서가 달라야 한다. 
+int plus(int x, int y) {...}
+doublie plus(int q, int b) {...}
 ```
-  
+
+### 메소드 오버로딩 실습
+
+```java
+public class Area {
+	
+	// 메소드의 이름은 모두 같다. 매개변수의 타입과 개수가 다르다.
+	// 매개값에 따라 areaCal의 역할이 달라진다.
+	
+	double areaCal(double radius) {
+		return 3.14 * radius * radius;
+	}
+	
+	int areaCal(int width) {
+		return width * width;
+	}
+	
+	int areaCal(int width, int height) {
+		return width * height;
+	}
+}
+// 
+import java.util.Scanner; // 자바 유틸 스캐너 라이브러리 호출 
+
+public class AreaEx {
+
+	public static void main(String[] args) {
+		Area areaEx = new Area(); // 새로운 Area 객체 생성, areaEx가 참조.
+		Scanner sc = new Scanner(System.in); // 새로운 Scanner 객체 생성, 매개변수는 시스템 입력.
+		System.out.print("반지름을 입력하라. : ");
+		
+		System.out.println("원의 면적 : " + areaEx.areaCal(sc.nextDouble())); 
+
+		System.out.println("정사각형의 넓이 : " + areaEx.areaCal(sc.nextInt()));
+		
+		System.out.println("직사각형의 넓이 : " + areaEx.areaCal(sc.nextInt(), sc.nextInt()));
+		
+	}
+
+}
+// 결과 
+// 반지름을 입력하라. : 31.2
+// 원의 면적 : 3056.6016
+// 20 입력
+// 정사각형의 넓이 : 400
+// 30 입력
+// 40 입력 
+// 직사각형의 넓이 : 1200
+
+```
 
 
+## 인스턴스 멤버와 this
+
+### 인스턴스 멤버
+- 객체(인스턴스) 생성 후 사용하는 필드와 메소드
+  - 이들을 인스턴스 필드와 인스턴스 메소드라 한다.
+- 인스턴스 멤버는 객체에 소속된 멤버이므로 객체 없이 사용 불가
 
 
 
