@@ -248,9 +248,74 @@ public class AreaEx {
 
 ### 인스턴스 멤버
 - 객체(인스턴스) 생성 후 사용하는 필드와 메소드
+  - ```java
+    public class Car {
+    	int gas; // 인스턴스 필드
+    	void setSpeed(int speed) {...} // 인스턴스 메소드
+    }
+    ```
   - 이들을 인스턴스 필드와 인스턴스 메소드라 한다.
 - 인스턴스 멤버는 객체에 소속된 멤버이므로 객체 없이 사용 불가
 
+### thus
+- 객체 자신의 참조를 가진 키워드
+- 객체 내부에서 인스턴스 멤버임을 명확히 하기 위해 this. 사용 ``this.gas``
+- 매개변수와 필드명이 동일 시 인스턴스 필드임을 명확히 하기 위해 사용
+  - ```java
+    Car(int gas){
+    	this.gas = gas;
+    }
+    ```
+## 정적 멤버와 static
+
+### 정적 static 멤버란?
+- 클래스에 고정된 필드(정적 필드)와 메소드(정적 메소드)
+- 정적 멤버는 클래스에 소속된 멤버
+  - 객체 내부에 존재하지 않고 메소드 영역에 존재
+  - 정적 멤버는 객체를 생성하지 않고 클래스로 바로 접근해서 사용 ``gas.setSpeed(10);``
+
+### 정적 멤버 선언
+```java
+public class 클래스명 {
+	static 타입 필드 = 초기값; // 정적 필드
+	static 리턴타입 메소드명(매개변수) {...} // 정적 메소드
+}
+```
+### 정적 멤버 사용 
+- 클래스 이름과 도트``.``연산자로 접근
+```java
+public class Calculator {
+	static int plus(int x, int y){ ...}
+}
+public class CacEx {
+	public static void main(String[] args) {
+		System.out.printf("%d + %d = %d\n", 1,3,Calculator.plus(1,3))
+	}
+}
+```
+
+## 인스턴스 멤버 VS 정적 멤버
+### 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+  	
 
 
 
